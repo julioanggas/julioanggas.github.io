@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julio Anggas Saenz | Software QA Engineer & QA Lead</title>
+<meta name="description" content="Portfólio de Julio Anggas Saenz, Software QA Engineer e QA Lead com experiência em testes funcionais, API, E2E, IoT e sistemas de IA.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F5F8; --surface:#FFFFFF; --ink:#1D2433; --muted:#5B6475;
+  --line:#D9DEE6; --pass:#2F7D5B; --pass-soft:#E3F1EA; --keyword:#3A5BA0; --warn:#A8671A;
+  --code-bg:#1D2433; --code-ink:#E6E9EF; --code-muted:#8A93A6;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#151A23; --surface:#1C2230; --ink:#E6E9EF; --muted:#9AA3B5;
+    --line:#2C3445; --pass:#5CC194; --pass-soft:#1F3A30; --keyword:#8FAEF0; --warn:#E0A55A;
+    --code-bg:#0F131B;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-color:var(--pass);text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:var(--pass)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pass);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* Navegação */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:16px}
+nav .brand{font-weight:700;text-decoration:none;letter-spacing:-.01em}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:720px){nav ul{display:none}}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding:72px 0 64px}
+.hero h1{font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 12px;font-weight:700}
+.hero .role{font-size:1.15rem;color:var(--muted);margin:0 0 20px}
+.hero p.intro{margin:0 0 28px;max-width:44ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:11px 18px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--pass);border-color:var(--pass);color:#fff}
+.btn:not(.primary):hover{border-color:var(--pass)}
+.meta-line{margin-top:22px;font-size:14px;color:var(--muted)}
+
+/* Bloco Gherkin (elemento principal) */
+.feature{background:var(--code-bg);color:var(--code-ink);border-radius:14px;font-family:var(--mono);font-size:14px;line-height:1.75;overflow:hidden;box-shadow:0 24px 48px -24px rgba(29,36,51,.45)}
+.feature .bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--code-muted);font-size:12.5px}
+.feature ol{list-style:none;margin:0;padding:18px 18px 18px 0;counter-reset:ln;overflow-x:auto}
+.feature li{counter-increment:ln;white-space:pre;padding-left:52px;position:relative}
+.feature li::before{content:counter(ln);position:absolute;left:0;width:36px;text-align:right;color:#4A5366}
+.kw{color:#9FB9F5;font-weight:500}
+.kw.then{color:#7FD6AC}
+.feature .result{display:flex;align-items:center;gap:10px;padding:12px 18px;border-top:1px solid rgba(255,255,255,.08);color:#7FD6AC;font-size:13px}
+.dot{width:9px;height:9px;border-radius:50%;background:#7FD6AC;box-shadow:0 0 0 4px rgba(127,214,172,.18)}
+@media (prefers-reduced-motion:no-preference){
+  .feature li,.feature .result{opacity:0;animation:type .35s ease forwards}
+  .feature li:nth-child(1){animation-delay:.1s}.feature li:nth-child(2){animation-delay:.25s}
+  .feature li:nth-child(3){animation-delay:.4s}.feature li:nth-child(4){animation-delay:.55s}
+  .feature li:nth-child(5){animation-delay:.7s}.feature li:nth-child(6){animation-delay:.85s}
+  .feature li:nth-child(7){animation-delay:1s}.feature li:nth-child(8){animation-delay:1.15s}
+  .feature .result{animation-delay:1.5s}
+  @keyframes type{from{opacity:0;transform:translateX(-4px)}to{opacity:1;transform:none}}
+}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:48px}}
+@media (max-width:520px){.feature{font-size:12.5px}.feature li{white-space:pre-wrap;padding-left:40px}.feature li::before{width:26px}}
+
+/* Seções */
+section.block{padding:64px 0;border-top:1px solid var(--line)}
+section.block h2{font-size:1.75rem;letter-spacing:-.02em;margin:0 0 8px}
+.lead{color:var(--muted);margin:0 0 36px;max-width:62ch}
+.two{display:grid;grid-template-columns:220px 1fr;gap:40px}
+@media (max-width:760px){.two{grid-template-columns:1fr;gap:12px}}
+
+/* Experiência (linha do tempo) */
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline>li{position:relative;padding:0 0 40px 28px}
+.timeline>li:last-child{padding-bottom:0}
+.timeline>li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--pass)}
+.timeline>li.current::before{background:var(--pass)}
+.timeline h3{margin:0;font-size:1.15rem}
+.timeline .where{color:var(--muted);font-size:15px;margin:2px 0 12px}
+.timeline ul{margin:0;padding-left:18px;max-width:70ch}
+.timeline ul li{margin-bottom:6px}
+
+/* Competências */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px}
+@media (max-width:760px){.skills{grid-template-columns:1fr}}
+.skills h3{font-size:1rem;margin:0 0 10px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.tags li{font-size:14px;padding:4px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.skills .ai .tags li{border-color:var(--pass);background:var(--pass-soft)}
+
+/* Resultados */
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media (max-width:860px){.results{grid-template-columns:1fr}}
+.results article{border-top:3px solid var(--pass);padding-top:16px}
+.results h3{font-size:1.05rem;margin:0 0 8px}
+.results p{margin:0;color:var(--muted);font-size:15.5px}
+
+/* Amostras de trabalho */
+.samples{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media (max-width:860px){.samples{grid-template-columns:1fr}}
+.sample{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sample header{padding:16px 20px;border-bottom:1px solid var(--line)}
+.sample header h3{margin:0;font-size:1.05rem}
+.sample header p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.sample pre{margin:0;padding:18px 20px;font-family:var(--mono);font-size:13px;line-height:1.7;overflow-x:auto;white-space:pre}
+.sample pre .kw{color:var(--keyword)}
+.sample pre .kw.then{color:var(--pass)}
+.bug dl{margin:0;padding:18px 20px;display:grid;grid-template-columns:120px 1fr;gap:8px 14px;font-size:14.5px}
+.bug dt{color:var(--muted)}
+.bug dd{margin:0}
+.bug ol{margin:0;padding-left:18px}
+.sev{display:inline-block;padding:1px 9px;border-radius:999px;font-size:13px;font-weight:600;color:var(--warn);border:1px solid var(--warn)}
+.note{font-size:13.5px;color:var(--muted);margin-top:16px}
+
+/* Formação */
+.edu{list-style:none;margin:0 0 36px;padding:0}
+.edu li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.edu li span:last-child{color:var(--muted);white-space:nowrap;font-size:15px}
+@media (max-width:560px){.edu li{flex-direction:column;gap:0}}
+.certs{columns:2;column-gap:40px;padding-left:18px;margin:0}
+.certs li{margin-bottom:6px;break-inside:avoid}
+@media (max-width:640px){.certs{columns:1}}
+.langs{display:flex;flex-wrap:wrap;gap:32px;margin:0;padding:0;list-style:none}
+.langs strong{display:block}
+.langs span{color:var(--muted);font-size:15px}
+
+/* Contato */
+.contact{padding:72px 0 88px;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(1.8rem,4vw,2.4rem);letter-spacing:-.02em;margin:0 0 12px}
+.contact p{color:var(--muted);max-width:52ch;margin:0 0 28px}
+footer{padding:24px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navegação principal">
+  <div class="wrap">
+    <a class="brand" href="#topo">Julio Anggas</a>
+    <ul>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#competencias">Competências</a></li>
+      <li><a href="#exemplos">Exemplos</a></li>
+      <li><a href="#formacao">Formação</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="topo">
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <h1>Julio Anggas Saenz</h1>
+        <p class="role">Software QA Engineer, QA Lead e especialista em QA de sistemas de IA</p>
+        <p class="intro">Mais de 4 anos garantindo a qualidade de aplicações web, mobile, IoT e assistentes de IA. Estruturo áreas de QA, escrevo cenários claros em BDD e ajudo times a entregar com confiança.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contato">Entrar em contato</a>
+          <a class="btn" href="cv.pdf" download>Baixar currículo (PDF)</a>
+        </div>
+        <p class="meta-line">Joinville, SC, Brasil. Disponível para presencial, híbrido ou remoto.</p>
+      </div>
+
+      <figure class="feature" aria-label="Cenário BDD que resume o trabalho de Julio" style="margin:0">
+        <div class="bar"><span>contratar_qa_lead.feature</span><span>Gherkin</span></div>
+        <ol>
+          <li><span class="kw">Funcionalidade:</span> Qualidade do início ao fim</li>
+          <li> </li>
+          <li>  <span class="kw">Cenário:</span> Contratar um QA Lead</li>
+          <li>    <span class="kw">Dado</span> um produto que precisa ser confiável</li>
+          <li>    <span class="kw">E</span> um time que precisa de processos claros</li>
+          <li>    <span class="kw">Quando</span> Julio assume a estratégia de testes</li>
+          <li>    <span class="kw then">Então</span> bugs críticos surgem antes da release</li>
+          <li>    <span class="kw then">E</span> o time entrega com mais confiança</li>
+        </ol>
+        <div class="result"><span class="dot" aria-hidden="true"></span>1 cenário, 6 passos, todos aprovados</div>
+      </figure>
+    </header>
+  </div>
+
+  <section class="block" id="sobre">
+    <div class="wrap two">
+      <h2>Sobre</h2>
+      <div>
+        <p style="margin-top:0">Atuo com testes manuais, funcionais, de regressão, exploratórios, de API e E2E em ambientes ágeis (Scrum e Kanban), com foco em estratégia de qualidade, planejamento de testes, gestão de defeitos, validação de regras de negócio e shift-left testing.</p>
+        <p>Na Samsung, testei a assistente de voz Bixby e sistemas de IA generativa, avaliando prompts, respostas, alucinações e fluxos conversacionais. Como QA Lead, construí uma área de qualidade do zero para uma plataforma crítica do agronegócio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experiencia">
+    <div class="wrap two">
+      <h2>Experiência</h2>
+      <ol class="timeline">
+        <li class="current">
+          <h3>QA Test Lead</h3>
+          <p class="where">WSYS, abril a setembro de 2026</p>
+          <ul>
+            <li>Liderei a estratégia de qualidade de uma plataforma CTRM para operações críticas do agronegócio.</li>
+            <li>Estruturei a área de QA do zero: processos, ferramentas, governança e boas práticas.</li>
+            <li>Desenvolvi o time de qualidade com treinamento técnico e padronização.</li>
+            <li>Validei regras de negócio de commodities, hedge, câmbio e contratos agrícolas.</li>
+            <li>Defini métricas de qualidade e governança de releases, reduzindo falhas críticas.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Desenvolvedor de Testes de Software Pleno</h3>
+          <p class="where">Paradigma Business Solutions, outubro de 2025 a março de 2026</p>
+          <ul>
+            <li>Testes funcionais, de regressão, integração, exploratórios, API e E2E em sistemas corporativos.</li>
+            <li>Especificação de cenários em BDD e Gherkin, traduzindo regras de negócio para Dado/Quando/Então.</li>
+            <li>Criação de massa de testes em SQL Server e gestão de defeitos no Azure DevOps.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Software QA Engineer</h3>
+          <p class="where">SIDI (Samsung), março de 2022 a março de 2025</p>
+          <ul>
+            <li>Testes E2E em IoT e smart systems: celulares, smart TVs e eletrodomésticos conectados.</li>
+            <li>Cenários BDD para treinar e testar a IA conversacional Bixby.</li>
+            <li>Testes de LLMs, validação de prompts, avaliação de respostas, ASR, TTS, NLP e NLU.</li>
+            <li>Avaliação de IA generativa quanto a coerência, precisão, completude e alucinações.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Técnico de Testes</h3>
+          <p class="where">SIDIA (Samsung), setembro de 2013 a abril de 2014</p>
+          <ul>
+            <li>Testes de software e sistemas Android em dispositivos Samsung, com simulação e análise de falhas.</li>
+            <li>Testes de padrões Android e específicos Samsung (GTS, CTS, Samsung Members, Galaxy Store).</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="competencias">
+    <div class="wrap">
+      <h2>Competências</h2>
+      <p class="lead">Ferramentas e práticas que uso no dia a dia.</p>
+      <div class="skills">
+        <div>
+          <h3>Qualidade e testes</h3>
+          <ul class="tags">
+            <li>Testes funcionais</li><li>Regressão</li><li>Exploratórios</li><li>Integração</li><li>E2E</li><li>API</li><li>Performance</li><li>Usabilidade</li><li>Test planning</li><li>Test case design</li><li>Defect management</li>
+          </ul>
+        </div>
+        <div class="ai">
+          <h3>IA e QA conversacional</h3>
+          <ul class="tags">
+            <li>LLM testing</li><li>Prompt validation</li><li>Response evaluation</li><li>Hallucination detection</li><li>AI Observability</li><li>NLP / NLU</li><li>ASR / TTS</li><li>Assistentes virtuais</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ferramentas</h3>
+          <ul class="tags">
+            <li>Jira</li><li>Zephyr</li><li>Azure DevOps</li><li>Confluence</li><li>TestRail</li><li>GitHub</li><li>SQL Server</li><li>ADB</li><li>Logcat</li><li>Android Studio</li><li>Bugzilla</li><li>Wireshark</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Métodos e liderança</h3>
+          <ul class="tags">
+            <li>Scrum</li><li>Kanban</li><li>BDD / Gherkin</li><li>Shift-left</li><li>Release readiness</li><li>Métricas de qualidade</li><li>Mentoria</li><li>Treinamento técnico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="resultados">
+    <div class="wrap">
+      <h2>Resultados</h2>
+      <p class="lead">Iniciativas que mudaram a forma como os times trabalham.</p>
+      <div class="results">
+        <article>
+          <h3>Padronização de defeitos na Bixby</h3>
+          <p>Treinei times de QA, desenvolvimento e PMO para classificar defeitos da mesma forma, tornando os reports de qualidade mais assertivos.</p>
+        </article>
+        <article>
+          <h3>Programa de mentoria em QA</h3>
+          <p>Coestruturei um programa de mentoria técnica que reduziu o tempo de onboarding de novos colaboradores.</p>
+        </article>
+        <article>
+          <h3>Base de conhecimento da Bixby</h3>
+          <p>Centralizei funcionalidades e comandos de todas as cápsulas, reduzindo inconsistências nos reports e dúvidas do time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="exemplos">
+    <div class="wrap">
+      <h2>Exemplos de trabalho</h2>
+      <p class="lead">Amostras de como escrevo cenários e reporto defeitos.</p>
+      <div class="samples">
+        <div class="sample">
+          <header>
+            <h3>Cenário BDD</h3>
+            <p>Validação de login em um e-commerce</p>
+          </header>
+<pre><span class="kw">Funcionalidade:</span> Login do cliente
+
+  <span class="kw">Contexto:</span>
+    <span class="kw">Dado</span> que estou na página de login
+
+  <span class="kw">Cenário:</span> Login com credenciais válidas
+    <span class="kw">Quando</span> informo e-mail e senha cadastrados
+    <span class="kw">E</span> clico em "Entrar"
+    <span class="kw then">Então</span> vejo a página "Minha conta"
+
+  <span class="kw">Esquema do Cenário:</span> Login inválido
+    <span class="kw">Quando</span> informo "&lt;email&gt;" e "&lt;senha&gt;"
+    <span class="kw">E</span> clico em "Entrar"
+    <span class="kw then">Então</span> vejo a mensagem "&lt;mensagem&gt;"
+
+    <span class="kw">Exemplos:</span>
+      | email          | senha  | mensagem                  |
+      | ana@teste.com  | errada | E-mail ou senha inválidos |
+      |                | 123456 | Informe seu e-mail        |
+      | ana@teste      | 123456 | E-mail em formato inválido|</pre>
+        </div>
+
+        <div class="sample bug">
+          <header>
+            <h3>Bug report</h3>
+            <p>Defeito encontrado em teste exploratório</p>
+          </header>
+          <dl>
+            <dt>Título</dt><dd>Carrinho aplica cupom expirado no checkout</dd>
+            <dt>Severidade</dt><dd><span class="sev">Alta</span></dd>
+            <dt>Ambiente</dt><dd>Homologação, Chrome 128, Windows 11</dd>
+            <dt>Pré-condição</dt><dd>Cupom BEMVINDO10 expirado em 31/08</dd>
+            <dt>Passos</dt>
+            <dd><ol><li>Adicionar um produto ao carrinho</li><li>Informar o cupom BEMVINDO10</li><li>Avançar para o checkout</li></ol></dd>
+            <dt>Esperado</dt><dd>Mensagem "Cupom expirado" e nenhum desconto</dd>
+            <dt>Obtido</dt><dd>Desconto de 10% aplicado e pedido finalizado</dd>
+            <dt>Evidência</dt><dd>Vídeo da tela e log da requisição /api/cupom</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="note">Exemplos fictícios criados para este portfólio. Não contêm dados de clientes ou empresas.</p>
+    </div>
+  </section>
+
+  <section class="block" id="formacao">
+    <div class="wrap two">
+      <h2>Formação</h2>
+      <div>
+        <ul class="edu">
+          <li><span>Pós-graduação em Engenharia de Software com ênfase em Qualidade e Teste de Software</span><span>2024</span></li>
+          <li><span>Pós-graduação em Inteligência Artificial e Machine Learning</span><span>2025</span></li>
+          <li><span>Especialização em Criação de Chatbots para WhatsApp e Agentes de IA</span><span>2025</span></li>
+          <li><span>Engenharia Ambiental e Sanitária</span><span>2012 a 2017</span></li>
+        </ul>
+
+        <h3 style="font-size:1.1rem;margin:0 0 12px">Certificados</h3>
+        <ul class="certs">
+          <li>Fundamentos e Prática do Teste de Software (USP)</li>
+          <li>Introdução ao Teste de Software</li>
+          <li>IA em Teste de Software</li>
+          <li>Introdução à Inteligência Artificial</li>
+          <li>Descubra a Inteligência Artificial Generativa</li>
+          <li>Ética na Era da IA Generativa</li>
+          <li>Leading Agile Teams with Jira Software Cloud</li>
+          <li>Azure DevOps</li>
+          <li>Criando Equipes de Alto Desempenho</li>
+          <li>Kanban, Scrum, Scrumban, GTD e Liderança</li>
+          <li>TDC 2023 e TDC 2024</li>
+        </ul>
+
+        <h3 style="font-size:1.1rem;margin:36px 0 12px">Idiomas</h3>
+        <ul class="langs">
+          <li><strong>Espanhol</strong><span>Nativo</span></li>
+          <li><strong>Português</strong><span>Fluente</span></li>
+          <li><strong>Inglês</strong><span>Intermediário</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <h2>Vamos conversar?</h2>
+      <p>Estou aberto a oportunidades como QA Lead, Software QA Engineer ou QA de sistemas de IA.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:julioanggas@gmail.com">julioanggas@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/julioanggas" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/julioanggas" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Julio Anggas Saenz, 2026</div>
+</footer>
+
+</body>
+</html>
