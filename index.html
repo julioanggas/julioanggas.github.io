@@ -39,7 +39,7 @@ nav .brand{font-weight:700;text-decoration:none;letter-spacing:-.01em}
 nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px}
 nav ul a{text-decoration:none;color:var(--muted)}
 nav ul a:hover{color:var(--ink)}
-@media (max-width:720px){nav ul{display:none}}
+@media (max-width:760px){nav ul{display:none}}
 
 /* Hero */
 .hero{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding:72px 0 64px}
@@ -125,6 +125,18 @@ section.block h2{font-size:1.75rem;letter-spacing:-.02em;margin:0 0 8px}
 .sev{display:inline-block;padding:1px 9px;border-radius:999px;font-size:13px;font-weight:600;color:var(--warn);border:1px solid var(--warn)}
 .note{font-size:13.5px;color:var(--muted);margin-top:16px}
 
+/* Projetos */
+.project{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+@media (max-width:640px){.project{grid-template-columns:1fr}}
+.project h3{margin:0 0 4px;font-size:1.2rem}
+.project .kicker{margin:0 0 14px;color:var(--muted);font-size:14px}
+.project p{margin:0 0 14px;max-width:62ch}
+.project .tags{margin-bottom:0}
+.project .stat{font-family:var(--mono);font-size:13px;color:var(--pass);white-space:nowrap}
+.project .head{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.project .head img{width:64px;height:64px;border-radius:14px;flex-shrink:0;border:1px solid var(--line)}
+.project .head .kicker{margin:0}
+
 /* Formação */
 .edu{list-style:none;margin:0 0 36px;padding:0}
 .edu li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
@@ -153,6 +165,7 @@ footer{padding:24px 0;border-top:1px solid var(--line);font-size:14px;color:var(
       <li><a href="#experiencia">Experiência</a></li>
       <li><a href="#competencias">Competências</a></li>
       <li><a href="#exemplos">Exemplos</a></li>
+      <li><a href="#projetos">Projetos</a></li>
       <li><a href="#formacao">Formação</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
@@ -351,6 +364,33 @@ footer{padding:24px 0;border-top:1px solid var(--line);font-size:14px;color:var(
         </div>
       </div>
       <p class="note">Exemplos fictícios criados para este portfólio. Não contêm dados de clientes ou empresas.</p>
+    </div>
+  </section>
+
+  <section class="block" id="projetos">
+    <div class="wrap">
+      <h2>Projetos</h2>
+      <p class="lead">Projetos pessoais que desenvolvi fora do trabalho.</p>
+      <article class="project">
+        <div>
+          <div class="head">
+            <img src="https://play-lh.googleusercontent.com/rRo6fud0V5OpQnRPxc-EHtKUyxk1S3YPkdLlD8CaU4hRUEmekMeYO4D8VUXV9ArAcmLW6yifvW7vTdNT6Quc=w128-h128" alt="Logo do app Best Fishing" width="64" height="64">
+            <div>
+              <h3>Best Fishing</h3>
+              <p class="kicker">App Android para pesca esportiva, publicado no Google Play</p>
+            </div>
+          </div>
+          <p>Desenvolvi este app inteiramente com ferramentas de IA, a partir de uma necessidade real do meu hobby: planejar melhor minhas pescarias. Ele combina previsão de pesca por dados ambientais (pressão, vento, temperatura e fases da lua), recomendações de iscas e técnicas por espécie, um mapa de destinos de pesca e uma rede social para compartilhar capturas.</p>
+          <p>O projeto passou por todo o ciclo, da ideia à publicação na loja, e me deu uma visão prática de como a IA acelera o desenvolvimento e de onde a validação humana continua indispensável.</p>
+          <ul class="tags">
+            <li>Desenvolvimento com IA</li><li>Android</li><li>Google Play</li><li>Publicação de app</li>
+          </ul>
+        </div>
+        <div>
+          <p class="stat">50+ downloads</p>
+          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.aistudio.pescariaideal.pqzmxy" target="_blank" rel="noopener">Ver no Google Play</a>
+        </div>
+      </article>
     </div>
   </section>
 
